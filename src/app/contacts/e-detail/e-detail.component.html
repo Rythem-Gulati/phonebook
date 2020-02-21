@@ -1,0 +1,75 @@
+<!-- <p>e-detail works!</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="card">
+  <img src="img.jpg" alt="John" style="width:100%">
+  <h1>John Doe</h1>
+  <p class="title">CEO & Founder, Example</p>
+  <p>Harvard University</p>
+  <a href="#"><i class="fa fa-dribbble"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-linkedin"></i></a>
+  <a href="#"><i class="fa fa-facebook"></i></a>
+  <p><button>Contact</button></p>
+</div> -->
+
+<!-- <h3>selected name ={{contactname}}</h3> -->
+<p>selected id = {{contactId}}</p>
+
+<head>   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"></head>
+<div class="main-block">
+    <div class="left-part">
+      <i class="fas fa-envelope"></i>
+      <i class="fas fa-at"></i>
+      <i class="fas fa-mail-bulk"></i>
+    </div> 
+    
+<form  [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <h1 style="margin-left:20px;color: #7d068d; text-align: center;"><strong>EDIT</strong></h1>
+    <div class="info">
+      
+      <input 
+        formControlName="name"
+        id="name" 
+        class="form-control" 
+        type="text" 
+        name="name" 
+        placeholder="Full name"
+        
+        required>
+      <input
+      formControlName="ContactNumber"
+         id="ContactNumber"
+         class="form-control"
+         type="number" 
+         name="ContactNumber" 
+         placeholder="Phone number"
+         
+         required>
+      <input 
+      formControlName="Email"
+        id="Email" 
+        class="form-control"
+        type="text" 
+        name="Email"
+        placeholder="Email"
+        required>
+      <input 
+      formControlName="Image"
+       id="Image " 
+       class="form-control"
+       type="text"
+       name="Image" 
+       placeholder="Image URL"
+       >
+    </div>
+    
+    <button type="submit" class="btn btn-success"[disabled]="!contactForm.valid" >Submit</button>
+    <hr>
+    <button type="button" class="btn btn-danger" (click)="onDeleteIngredient(i)">Delete Contact</button>
+    <hr>
+     <!-- <a routerLink="/new/:id/list" ><button type="button" class="btn btn-danger" >BACK</button> -->
+     <!-- </a>  -->
+     <button type="button" class="btn btn-danger"  (click)="onBack()">BACK</button>
+  </form>

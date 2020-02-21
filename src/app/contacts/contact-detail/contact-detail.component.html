@@ -1,0 +1,46 @@
+ <p>contact-detail works!</p> 
+<!-- <div class="row">
+    <div class="col-xs-xd-12">
+        <img src="" alt="" class="image-responsive">
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-xd-12">
+<h3>{{conatct.name}}</h3>
+    </div>
+</div>
+<div class="row">
+        <div class="col-xs-xd-12">
+            <h3>conatct.number</h3>
+        </div>
+    </div>
+ <div class="row">
+        <div class="col-xs-xd-12">
+                <h3>conatct.email</h3>
+        </div>
+ </div>
+<div class="row">
+        <div class="col-xs-xd-12">
+                <button class="btn"><i class="fa fa-trash"></i> Trash</button>        
+         </div>
+</div>  -->
+<head>   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"></head>
+<div class="main-block">
+    <div class="left-part">
+      <i class="fas fa-envelope"></i>
+      <i class="fas fa-at"></i>
+      <i class="fas fa-mail-bulk"></i>
+    </div>
+<form [formGroup]="contactForm" (ngsubmit)="onSubmit()">
+    <h1 style="margin-left:20px;color: #7d068d; text-align: center;"><strong>ADD</strong></h1>
+    <div class="info">
+      <input formControlName="name" class="fname" type="text" name="name" placeholder="Full name" required>
+      <input formControlName="contactNumber"type="tel" name="name" placeholder="Phone number" required>
+      <input formControlName="Email"type="text" name="name" placeholder="Email" required email >
+
+      <input formControlName="Image"type="text" name="name" placeholder="Image URL">
+    </div>
+   
+    <button type="submit" class="btn btn-success"[disabled]="!contactForm.valid" >Submit</button>
+  </form>

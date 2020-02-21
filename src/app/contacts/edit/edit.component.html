@@ -1,0 +1,191 @@
+
+<!-- <section class="jumbotron text-center" style="background-color: rgb(241, 227, 252); height: 200px;">
+<ul  > 
+   <form style="text-align: center; margin-top:0px;margin-left: 300px; background-color:rgb(241, 227, 252) ;" >
+     <input 
+     #query
+     (keyup)="filter(query.value)"
+     class="form-control mr-sm-2" type="search"  
+     placeholder="Search" aria-label="Search"  
+     style="background-color: rgb(228, 181, 228); border: radius 50px ; width: 500px; height: 40px;" >
+
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="background-color:rgb(170, 152, 184); height: 40px; width: 90px; margin-right: 50px;">SEARCH</button>
+   </form>
+</ul>
+</section> -->
+
+      <div class="row">
+          <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <p *ngIf="loadedposts.length < 1 && !isFetching">No posts available!</p>
+            <ul class="list-group" *ngIf="loadedposts.length >= 1 && !isFetching">
+              
+              <table  style="width:700px;margin-top: 30px; " border="2px">
+                <thead style="text-align: center;">
+                  <tr style="font-size: x-large;">
+                      <th>s.No</th>
+                    <th>NAME</th>
+                    <th>CONTACT NUMBER</th>
+                    <th>EMAIL</th>
+                    <th>Action</th>
+                    
+      
+      
+                  </tr>
+                </thead>
+                <tr *ngFor="let post of loadedposts; index as i "  (click)="onEditItem()" style="font-size: large;">
+                    <td>{{i}} </td>
+                  <td><span style="margin-left: 10px;"><img 
+                    [src]="post.Image"
+                     alt="{{post.name}}"
+                     class="image-responsive"
+                     style="max-height: 30px;"></span>
+                     {{post.name}}</td>
+                  <td>{{post.ContactNumber}}</td>
+                  <td>{{post.Email}}</td>
+                  <a (click)="onSelected()">
+                  <td >
+                    <button><i class="fa fa-heart"></i></button>
+                    <button>
+                        <span class="glyphicon glyphicon-warning-sign"></span> 
+                      </button>
+                    <!-- <button><i class="fa fa-warning"></i></button> -->
+                    <button (click)="onSelect(post)"> <i class="fa fa-edit"></i></button>
+                    <button (click)="onDelete()" ><span class="glyphicon glyphicon-trash" ></span> </button>
+                      
+                    
+                    
+                   </td>
+                   </a>
+                </tr>
+                
+      
+      
+              </table>
+            
+              
+            </ul>
+            <p *ngIf="isFetching">Loading...</p>
+          </div>
+          </div>
+      <head>   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"></head>
+    <div class="main-block">
+        <div class="left-part">
+          <i class="fas fa-envelope"></i>
+          <i class="fas fa-at"></i>
+          <i class="fas fa-mail-bulk"></i>
+        </div>
+    <form  #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+        <h1 style="margin-left:20px;color: #7d068d; text-align: center;"><strong>ADD</strong></h1>
+        <div class="info">
+          <input 
+            id="name"
+            class="form-control"
+            type="text" 
+            placeholder="Full name"
+            ngModel
+            name="name"
+            required >
+          <input 
+            ngModel
+            name="ContactNumber"
+            id="ContactNumber"
+            class="form-control" 
+            type="number"  
+            
+            placeholder="Phone number"
+            required
+           
+            >
+          <input 
+            required
+            email
+            ngModel
+            name="Email" 
+            id="Email" 
+            type="text" 
+            class="form-control" 
+            placeholder="Email">
+    
+          <input 
+            ngModel
+            name="Image"  
+            id="Image" 
+            type="text" 
+            class="form-control"  
+            placeholder="Image URL">
+        </div>
+       
+        <button 
+          
+          [disabled]="!postForm.valid"
+          
+          class="btn btn-primary"
+          type="submit" 
+          style="margin-top: 30px; width:40%;">Submit
+        </button>
+
+      <button  
+          type="button" 
+          class="btn btn-primary" 
+          (click)="onFetchPosts()"
+          style="margin-top: 30px; width:50%; margin-left: 20px;">
+          Fetch Posts
+      </button>
+      <button  
+          type="button" 
+          class="btn btn-primary" 
+          (click)=" onClearPosts()" 
+          style="margin-top: 30px;width:40%;">
+          Delete All  Posts
+      </button>
+         <a routerLink="/fav"> 
+             <button 
+                type="button" 
+                class="btn btn-primary" 
+                (click)=" onFav()" 
+                style="margin-top: 30px;width:50%;margin-left: 20px;">
+                Add to favourites
+             </button>
+         </a>
+    </form>
+    <hr>
+  </div>
+  
+  
+          
+            <!-- <table class="list-group-item" *ngFor="let post of loadedposts">
+               <thead>
+                 <tr>
+                   <th>name</th>
+                   <th>email</th>
+                 </tr>
+
+               </thead>
+               <tr>
+                 <td>{{post.name}}</td>
+                 <td>{{post.Email}}</td>
+
+               </tr>
+            </table>
+             -->
+          
+        
+     
+       <!-- <p>hi</p>
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+          <p *ngIf="loadedposts.length=>1">No posts available!</p> 
+          <ul class ="list-group"*ngIf="loadedposts.length>=1"> 
+            <ul>
+             <li class="list-group-item" ngFor="let post of loadedPosts">
+                <h1>{{ post.name }}</h1>
+                <p>{{post.ContactNumber}}</p>
+                <p>{{post.Email}}</p>
+                <p>{{post.Image}}</p>
+             </li>
+          </ul>
+
+        </div>
+      </div>  -->
+      <router-outlet></router-outlet>

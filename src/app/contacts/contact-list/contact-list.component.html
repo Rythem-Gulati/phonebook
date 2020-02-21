@@ -1,0 +1,91 @@
+
+<head><link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href=
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+</head>
+
+<table style="width:80% " border="2px" align="center"
+[routerLink]="[index]">
+        <thead style="text-align: center;" >
+           <tr style="font-size: x-large;">
+                   <th> CONTACT NAME</th>
+                 
+                   <th>CONTACT NUMBER</th>
+                   <th>EMAIL</th>
+                   <!-- <th>ACTION</th> -->
+           </tr>
+               
+        </thead>  
+        
+       <tr *ngFor="let contact of contacts;let i=id "  style="font-size: large;" [id]='i' >
+        <td><span style="margin-left: 10px;"><img 
+           [src]="contact.Image"
+            alt="{{contact.name}}"
+            class="image-responsive"
+            style="max-height: 30px;"></span>
+            {{contact.name}} </td>
+        
+         <td>{{contact.ContactNumber}}</td>
+         <td>{{contact.Email}}</td>
+         <!-- <td style="text-align: center;">
+          <button style="font-size:15px;margin-left: 10px;color: rgb(235, 69, 152);"><i class="fa fa-heart"></i></button>
+          <button style="font-size:15px;margin-left: 10px;color: red;"><i class="fa fa-warning"></i></button>
+          <button (click)="onEditContact()"style="font-size:15px;margin-left: 10px;color: black;"> <i class="fa fa-edit"></i></button>
+          <button ><span class="glyphicon glyphicon-trash" style="margin-left: 10px;font-size: 15px;"></span> </button>
+            
+          
+          
+         </td> -->
+       </tr>
+     
+   </table>
+   <!-- <div>
+    <p *ngIf="loadedposts.length <1">No posts available!</p>
+    <ul class="list-group" *ngIf="loadedposts.length >= 1 ">
+      <li class="list-group-item" *ngFor="let post of loadedposts">
+        <h3>{{ post.name }}</h3>
+        
+      </li>
+    </ul>
+    
+</div>  -->
+   
+   
+    <div style="width: 100%; text-align:center;margin-top: 30px;">
+        <button type="submit" 
+                (click)="onSaveData()"
+                style="background-color: #db96eb; font-size: 20px; 
+                width: 200px;
+                
+                border-radius: 10%;">
+               <strong>Save Data</strong>
+         </button>
+       </div>
+       <div style="width: 100%; text-align:center; margin-top: 30px;">
+          <button type="submit" 
+                 
+                  style="background-color: #db96eb; font-size: 20px; 
+                  width: 200px;
+                  
+                  border-radius: 10%;">
+                 <a routerLink="/new"> <strong>View all Contacts</strong></a>
+           </button>
+           
+         </div>
+       <!-- <div style="width: 100%; text-align:center;margin-top: 30px;"> 
+          <button type="submit" 
+                  
+                  style="background-color: #db96eb; font-size: 20px; 
+                  width: 100px;
+                 
+                  border-radius: 10%;">
+                 <strong>Add Data</strong>
+           </button>
+         </div> -->
+<router-outlet></router-outlet>

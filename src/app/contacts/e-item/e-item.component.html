@@ -1,0 +1,36 @@
+<p>e-item works!</p>
+<table  style="width:700px;margin-top: 30px; " border="2px">
+    <thead style="text-align: center;">
+      <tr style="font-size: x-large;">
+        <th>NAME</th>
+        <th>CONTACT NUMBER</th>
+        <th>EMAIL</th>
+        <th>Action</th>
+        
+
+
+      </tr>
+    </thead>
+    <tr *ngFor="let post of loadedposts; index as i"  style="font-size: large;">
+      <td>{{i}})   {{post.name}}</td>
+      <td>{{post.ContactNumber}}</td>
+      <td>{{post.Email}}</td>
+      <a (click)="onSelected()">
+      <td >
+        <button><i class="fa fa-heart"></i></button>
+        <button>
+            <span class="glyphicon glyphicon-warning-sign"></span> 
+          </button>
+        <!-- <button><i class="fa fa-warning"></i></button> -->
+        <button (click)="onEdit()"> <i class="fa fa-edit"></i></button>
+        <button ><span class="glyphicon glyphicon-trash" ></span> </button>
+          
+        
+        
+       </td>
+       </a>
+    </tr>
+    
+
+
+  </table>
